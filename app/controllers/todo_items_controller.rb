@@ -1,25 +1,12 @@
 class TodoItemsController < ApplicationController
-  before_action :set_todo_item, only: [:edit, :update, :destroy]
+  before_action :set_todo_item, only: [ :update, :destroy]
   before_action :set_todo_list
 
-  # GET /todo_items
-  # GET /todo_items.json
   def index
     @todo_items = @todo_list.todo_items.all
     @todo_item = @todo_items.new
   end
 
-  # GET /todo_items/new
-  def new
-    @todo_item = @todo_list.todo_items.new
-  end
-
-  # GET /todo_items/1/edit
-  def edit
-  end
-
-  # POST /todo_items
-  # POST /todo_items.json
   def create
     @todo_item = @todo_list.todo_items.new(todo_item_params)
     @todo_items = @todo_list.todo_items.all
@@ -33,23 +20,18 @@ class TodoItemsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /todo_items/1
-  # PATCH/PUT /todo_items/1.json
   def update
     respond_to do |format|
       if @todo_item.update(todo_item_params)
         format.html { redirect_to todo_list_todo_items_path(@todo_list)}
         format.json { respond_with_bip(@todo_item) }
       else
-        format.html { render :edit }
         format.json { render json: @todo_item.errors, status: :unprocessable_entity }
         format.json { respond_with_bip(@todo_item) }
       end
     end
   end
 
-  # DELETE /todo_items/1
-  # DELETE /todo_items/1.json
   def destroy
     @todo_item.destroy
     respond_to do |format|
@@ -59,7 +41,6 @@ class TodoItemsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_todo_item
       @todo_item = TodoItem.find(params[:id])
     end
@@ -68,7 +49,6 @@ class TodoItemsController < ApplicationController
       @todo_list = TodoList.find(params[:todo_list_id])
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
     def todo_item_params
       params.require(:todo_item).permit(:name, :todo_list_id, :completed)
     end
