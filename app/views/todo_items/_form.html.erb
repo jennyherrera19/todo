@@ -1,0 +1,20 @@
+<%= form_for [@todo_list, @todo_item] do |f| %>
+  <% if @todo_item.errors.any? %>
+    <div class="alert alert-danger alert-dismissible">
+      <button type="button" class="close" data-dismiss="alert">
+        <span aria-hidden="true">&times;</span>
+        <span class="sr-only">Close</span></button>
+
+      <% @todo_item.errors.full_messages.each do |message| %>
+          <%= message %>
+      <% end %>
+    </div>
+  <% end %>
+  <div class="input-group">
+    <%= f.text_field :name, :placeholder => "Add Item...",class: 'form-control'%>
+
+    <span class="input-group-btn">
+        <%= f.submit "Add", class: 'btn btn-default'%>
+    </span>
+  </div>
+<% end %>

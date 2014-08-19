@@ -1,0 +1,21 @@
+<div class="panel panel-default center">
+  <div class="panel-heading">
+    <h1>Todo</h1>
+  </div>
+  <div class="panel-body">
+    <%= render partial: "form" %>
+  </div>
+    <ul class="list-group">
+        <% @todo_lists.each do |todo_list| %>
+          <li class="list-group-item">
+            <%= link_to todo_list.name, todo_list_todo_items_path(todo_list) %>
+            <%= link_to '<span class="glyphicon glyphicon-remove"></span>'.html_safe, todo_list, method: :delete, data: { confirm: 'Are you sure?' }, class: "pull-right space" %>
+            <% if todo_list.todo_items.where(completed: [false, nil]).count > 0 %>
+                <span class="badge pull-right">
+                  <%= todo_list.todo_items.where(completed: [false, nil]).count%>
+                </span>
+            <% end %>
+          </li>
+        <% end %>
+    </ul>
+</div>

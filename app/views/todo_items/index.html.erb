@@ -1,0 +1,27 @@
+<h1><%= best_in_place @todo_list, :name, :type => :input %></h1>
+
+<%= render partial: "form" %>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Todo list</th>
+      <th colspan="1"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @todo_items.each do |todo_item| %>
+      <tr>
+        <td><%= best_in_place todo_item, :completed, :type => :checkbox, :path => todo_list_todo_item_path(@todo_list, todo_item), :collection => [raw("<span class='glyphicon glyphicon-unchecked make-bigger'></span>"), raw("<span class='glyphicon glyphicon-check make-bigger'></span>")]%></td>
+        <td><%= best_in_place todo_item, :name, :type => :input, :path => todo_list_todo_item_path(@todo_list, todo_item)%></td>
+        <td></td>
+        <td><%= link_to 'Destroy', todo_list_todo_item_path(@todo_list, todo_item), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Back', todo_lists_path %>
