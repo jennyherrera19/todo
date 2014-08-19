@@ -1,27 +1,20 @@
-<h1><%= best_in_place @todo_list, :name, :type => :input %></h1>
-
-<%= render partial: "form" %>
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Todo list</th>
-      <th colspan="1"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @todo_items.each do |todo_item| %>
-      <tr>
-        <td><%= best_in_place todo_item, :completed, :type => :checkbox, :path => todo_list_todo_item_path(@todo_list, todo_item), :collection => [raw("<span class='glyphicon glyphicon-unchecked make-bigger'></span>"), raw("<span class='glyphicon glyphicon-check make-bigger'></span>")]%></td>
-        <td><%= best_in_place todo_item, :name, :type => :input, :path => todo_list_todo_item_path(@todo_list, todo_item)%></td>
-        <td></td>
-        <td><%= link_to 'Destroy', todo_list_todo_item_path(@todo_list, todo_item), method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'Back', todo_lists_path %>
+<div class="panel panel-default center">
+  <div class="panel-heading">
+    <h1><%= best_in_place @todo_list, :name, :type => :input %></h1>
+  </div>
+  <div class="panel-body">
+    <%= render partial: "form" %>
+  </div>
+  <ul class="list-group">
+        <% @todo_items.each do |todo_item| %>
+            <li class="list-group-item">
+                <%= best_in_place todo_item, :completed, :type => :checkbox, :path => todo_list_todo_item_path(@todo_list, todo_item), :collection => [raw("<span class='glyphicon glyphicon-unchecked make-bigger'></span>"), raw("<span class='glyphicon glyphicon-check make-bigger'></span>")]%>
+                <%= best_in_place todo_item, :name, :type => :input, :path => todo_list_todo_item_path(@todo_list, todo_item)%>
+                <%= link_to '<span class="glyphicon glyphicon-remove"></span>'.html_safe, todo_list_todo_item_path(@todo_list, todo_item), method: :delete, data: { confirm: 'Are you sure?' }, class: "pull-right"%>
+            </li>
+        <% end %>
+    </ul>
+  <div class="panel-footer">
+    <%= link_to '<span class="glyphicon glyphicon-circle-arrow-left make-bigger"></span>'.html_safe, todo_lists_path %>
+  </div>
+</div>
