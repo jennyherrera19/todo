@@ -15,6 +15,9 @@
  */
 @import "bootstrap-sprockets";
 @import "bootstrap";
+$break-small: 768px;
+$break-medium: 992px;
+
 
 body {
   text-decoration: none;
@@ -25,8 +28,14 @@ body {
 }
 
 .center {
-  width: 50%;
-  margin: 0 auto;
+  width: 97%;
+  margin: 5px auto;
+  @media screen and (min-width: $break-small) {
+    width: 80%;
+  }
+  @media screen and (min-width: $break-medium) {
+    width: 60%;
+  }
 }
 
 .space {
@@ -42,5 +51,5 @@ a:hover {
 }
 
 h1 {
-  padding: 10px;
+  padding: 5px;
 }
