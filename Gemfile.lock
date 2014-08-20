@@ -1,11 +1,10 @@
 GIT
-  remote: git://github.com/bernat/best_in_place.git
-  revision: 52c795fefa378d999653443f07c68af2633afd0b
-  branch: rails-4
+  remote: git://github.com/bernat/best_in_place
+  revision: ee95961e639022e6aa528704b8cb4789596ea61b
+  ref: ee95961e639022e6aa528704b8cb4789596ea61b
   specs:
-    best_in_place (2.0.3)
-      jquery-rails
-      rails (~> 4)
+    best_in_place (3.0.0.alpha)
+      actionpack (>= 3.2)
 
 GEM
   remote: https://rubygems.org/
@@ -118,7 +117,7 @@ GEM
     treetop (1.4.15)
       polyglot
       polyglot (>= 0.3.1)
-    turbolinks (2.2.2)
+    turbolinks (2.2.3)
       coffee-rails
     tzinfo (1.2.2)
       thread_safe (~> 0.1)

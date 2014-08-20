@@ -19,6 +19,6 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'spring',        group: :development
 
-gem 'best_in_place', github: 'bernat/best_in_place', branch: 'rails-4'
+gem "best_in_place", :git => "git://github.com/bernat/best_in_place", :ref => "ee95961e639022e6aa528704b8cb4789596ea61b"
 gem 'bootstrap-sass', '~> 3.2.0.1'
 
