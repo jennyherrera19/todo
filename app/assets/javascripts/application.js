@@ -15,9 +15,13 @@
 //= require bootstrap-sprockets
 //= require turbolinks
 //= require best_in_place
+//= require best_in_place.purr
 //= require_tree .
 
-$(document).ready(function() {
-    /* Activating Best In Place */
+
+var ready = function() {
     jQuery(".best_in_place").best_in_place();
-});
+};
+
+$(document).ready(ready);
+$(document).on('page:load', ready);
